@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../hotelbooking2/entity/entity.iml" filepath="$PROJECT_DIR$/../hotelbooking2/entity/entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hotelbooking2.iml" filepath="$PROJECT_DIR$/hotelbooking2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hotelbooking2/repository/repository.iml" filepath="$PROJECT_DIR$/../hotelbooking2/repository/repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hotelbooking2/service/service.iml" filepath="$PROJECT_DIR$/../hotelbooking2/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hotelbooking2/web/web.iml" filepath="$PROJECT_DIR$/../hotelbooking2/web/web.iml" />
+    </modules>
+  </component>
+</project>

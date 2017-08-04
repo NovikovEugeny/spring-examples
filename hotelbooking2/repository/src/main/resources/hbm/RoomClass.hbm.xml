@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.epam.hotelbooking.entity.RoomClass" table="room_classes" catalog="hotel">
+        <id name="className" type="string">
+            <column name="class" length="25" not-null="true"/>
+        </id>
+        <property name="roomQuantity" type="java.lang.Integer">
+            <column name="room_quantity" not-null="true" unique="false" />
+        </property>
+        <property name="cost" type="java.lang.Double">
+            <column name="cost"  not-null="true" unique="false" />
+        </property>
+        <set name="rooms" table="rooms"
+             inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="class" not-null="true" />
+            </key>
+            <one-to-many class="com.epam.hotelbooking.entity.Room" />
+        </set>
+    </class>
+</hibernate-mapping>
