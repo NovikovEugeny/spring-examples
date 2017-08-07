@@ -11,8 +11,22 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>controller</servlet-name>
-        <url-pattern>/controller</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>*.gif</url-pattern>
+        <url-pattern>*.ico</url-pattern>
+    </servlet-mapping>
+
 </web-app>
