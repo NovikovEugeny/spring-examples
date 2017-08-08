@@ -31,4 +31,13 @@ public class ApartmentServiceImpl implements ApartmentService {
     public List<Apartment> findFreeByRoomQuantity(int roomQuantity) {
         return apartmentRepository.findFreeByRoomQuantity(roomQuantity);
     }
+
+    public void save(Apartment apartment) {
+        apartmentRepository.save(apartment);
+    }
+
+    public Apartment findById(String id) {
+        return apartmentRepository.findById(id);
+    }
+
 }

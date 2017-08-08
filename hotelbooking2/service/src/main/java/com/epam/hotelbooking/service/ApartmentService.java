@@ -14,4 +14,8 @@ public interface ApartmentService {
 
     List<Apartment> findFreeByRoomQuantity(int roomQuantity);
 
+    void save(Apartment apartment);
+
+    Apartment findById(String id);
+
 }

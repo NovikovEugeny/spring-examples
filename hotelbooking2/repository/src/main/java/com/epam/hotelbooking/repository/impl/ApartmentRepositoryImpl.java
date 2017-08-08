@@ -1,6 +1,7 @@
 package com.epam.hotelbooking.repository.impl;
 
 import com.epam.hotelbooking.entity.Apartment;
+import com.epam.hotelbooking.entity.ApartmentClass;
 import com.epam.hotelbooking.repository.ApartmentRepository;
 import com.epam.hotelbooking.repository.query.QueryStore;
 import org.hibernate.Session;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -44,5 +46,15 @@ public class ApartmentRepositoryImpl implements ApartmentRepository {
         Query query = session.createQuery(QueryStore.FIND_FREE_BY_ROOM_QUANTITY);
         query.setParameter(ROOM_QUANTITY, roomQuantity);
         return query.getResultList();
+    }
+
+    public void save(Apartment apartment) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(apartment);
+    }
+
+    public Apartment findById(String id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Apartment.class, id);
     }
 }

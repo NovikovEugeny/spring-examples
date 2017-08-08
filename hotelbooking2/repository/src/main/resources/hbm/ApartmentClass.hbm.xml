@@ -3,7 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.epam.hotelbooking.entity.ApartmentClass" table="apartment_classes" catalog="hotel">
+    <class name="com.epam.hotelbooking.entity.ApartmentClass" table="apartment_classes">
         <id name="className" type="string">
             <column name="class" length="25" not-null="true"/>
         </id>
