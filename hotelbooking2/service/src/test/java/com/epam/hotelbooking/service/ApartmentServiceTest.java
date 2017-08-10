@@ -50,7 +50,7 @@ public class ApartmentServiceTest {
     }
 
     @Test
-    public void removeToDo() {
+    public void remove() {
         apartmentService.remove("");
         verify(apartmentRepository, times(1)).remove("");
     }
