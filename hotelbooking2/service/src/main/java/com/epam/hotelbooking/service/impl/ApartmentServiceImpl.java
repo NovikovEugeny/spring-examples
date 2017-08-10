@@ -3,6 +3,8 @@ package com.epam.hotelbooking.service.impl;
 import com.epam.hotelbooking.entity.Apartment;
 import com.epam.hotelbooking.repository.ApartmentRepository;
 import com.epam.hotelbooking.service.ApartmentService;
+import com.epam.hotelbooking.service.exception.ValidatorException;
+import com.epam.hotelbooking.service.util.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +30,10 @@ public class ApartmentServiceImpl implements ApartmentService {
         return apartmentRepository.findFreeByClass(className);
     }
 
-    public List<Apartment> findFreeByRoomQuantity(int roomQuantity) {
+    public List<Apartment> findFreeByRoomQuantity(int roomQuantity) throws ValidatorException {
+
+        Validator.validateNumber(roomQuantity);
+
         return apartmentRepository.findFreeByRoomQuantity(roomQuantity);
     }
 
@@ -40,4 +45,7 @@ public class ApartmentServiceImpl implements ApartmentService {
         return apartmentRepository.findById(id);
     }
 
+    public void remove(String id) {
+        apartmentRepository.remove(id);
+    }
 }

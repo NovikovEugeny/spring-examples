@@ -13,8 +13,8 @@
     <context:annotation-config/>
 
     <jdbc:embedded-database id="dataSource" type="H2">
-        <jdbc:script location="classpath:dbscript/script.sql" />
-        <jdbc:script location="classpath:dbscript/insert.sql" />
+        <jdbc:script location="classpath:oracle_db_script/script.sql" />
+        <jdbc:script location="classpath:oracle_db_script/insert.sql" />
     </jdbc:embedded-database>
 
     <bean id="sessionFactory"
@@ -29,7 +29,7 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">
-                    org.hibernate.dialect.MySQL5Dialect
+                    org.hibernate.dialect.Oracle10gDialect
                 </prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.show_sql">true</prop>

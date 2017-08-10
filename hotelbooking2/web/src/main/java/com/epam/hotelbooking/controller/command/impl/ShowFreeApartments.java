@@ -5,6 +5,7 @@ import com.epam.hotelbooking.controller.command.util.JsonConverter;
 import com.epam.hotelbooking.entity.Apartment;
 import com.epam.hotelbooking.service.ApartmentService;
 import com.epam.hotelbooking.util.AppContext;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ public class ShowFreeApartments implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         ApartmentService apartmentService = AppContext.getInstance().getApartmentService();
         List<Apartment> apartments = apartmentService.findAllFree();
 

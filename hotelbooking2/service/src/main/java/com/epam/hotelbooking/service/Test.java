@@ -1,5 +1,6 @@
 package com.epam.hotelbooking.service;
 
+import com.epam.hotelbooking.entity.Apartment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.context.ApplicationContext;
@@ -25,6 +26,13 @@ public class Test {
         ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
 
         ApartmentService apartmentService = context.getBean(ApartmentService.class);
+
+
+
+        for (Apartment apartment : apartmentService.findAll()) {
+            System.out.println(apartment);
+        }
+
 
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <apartments id="201" class="BDRM1" status="free"/>
     <apartments id="999" class="BDRM1" status="free"/>
+    <apartments id="201" class="BDRM1" status="free"/>
 </dataset>

@@ -13,37 +13,25 @@
     <artifactId>service</artifactId>
 
     <dependencies>
-    <dependency>
-        <groupId>com.epam</groupId>
-        <artifactId>entity</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-        <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>com.epam</groupId>
-        <artifactId>repository</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-        <scope>compile</scope>
-    </dependency>
-
-        <!--json-->
         <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
+            <groupId>com.epam</groupId>
+            <artifactId>entity</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam</groupId>
+            <artifactId>repository</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <scope>compile</scope>
         </dependency>
 
         <!--test-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.dbunit</groupId>
-            <artifactId>dbunit</artifactId>
-            <type>jar</type>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -56,14 +44,17 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
         </dependency>
 
     </dependencies>
-
 
 </project>

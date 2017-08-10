@@ -1,7 +1,6 @@
 package com.epam.hotelbooking.repository.impl;
 
 import com.epam.hotelbooking.entity.Apartment;
-import com.epam.hotelbooking.entity.ApartmentClass;
 import com.epam.hotelbooking.repository.ApartmentRepository;
 import com.epam.hotelbooking.repository.query.QueryStore;
 import org.hibernate.Session;
@@ -15,18 +14,20 @@ import java.util.List;
 
 
 @Repository
+@Transactional
 @SuppressWarnings("unchecked")
 public class ApartmentRepositoryImpl implements ApartmentRepository {
 
     private final static String CLASS_NAME = "className";
     private final static String ROOM_QUANTITY = "roomQuantity";
+    private final static String ID = "id";
 
     @Autowired
     private SessionFactory sessionFactory;
 
     public List<Apartment> findAll() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery(QueryStore.FIND_ALL).getResultList();
+        return session.createQuery(QueryStore.FIND_ALL).list();
     }
 
     public List<Apartment> findAllFree() {
@@ -56,5 +57,12 @@ public class ApartmentRepositoryImpl implements ApartmentRepository {
     public Apartment findById(String id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Apartment.class, id);
+    }
+
+    public void remove(String id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery(QueryStore.DELETE_BY_ID);
+        query.setParameter(ID, id);
+        query.executeUpdate();
     }
 }

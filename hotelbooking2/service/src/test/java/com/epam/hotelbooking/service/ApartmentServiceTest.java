@@ -1,83 +1,58 @@
 package com.epam.hotelbooking.service;
 
 import com.epam.hotelbooking.entity.Apartment;
-import com.epam.hotelbooking.entity.ApartmentClass;
-import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DatabaseSetup;
-import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.epam.hotelbooking.repository.ApartmentRepository;
+import com.epam.hotelbooking.service.impl.ApartmentServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-config.xml")
-@TestExecutionListeners({
-        DependencyInjectionTestExecutionListener.class,
-        DbUnitTestExecutionListener.class })
+import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Mockito.*;
+
+
+@RunWith(MockitoJUnitRunner.class)
 public class ApartmentServiceTest {
 
-    @Autowired
-    private ApartmentService apartmentService;
+    @Mock
+    private ApartmentRepository apartmentRepository;
 
-    private void showData(List<Apartment> apartments) {
-        for (Apartment apartment : apartments) {
-            System.out.println(apartment);
-        }
-    }
+    @InjectMocks
+    private ApartmentServiceImpl apartmentService;
 
     @Test
     public void findAllTest() {
-        List<Apartment> apartments = apartmentService.findAll();
-        showData(apartments);
+        List<Apartment> apartments = new ArrayList<>();
+        apartments.add(new Apartment());
+        apartments.add(new Apartment());
+        apartments.add(new Apartment());
+
+        when(apartmentRepository.findAll()).thenReturn(apartments);
+
+        List<Apartment> result = apartmentService.findAll();
+        assertEquals(3, result.size());
     }
 
     @Test
-    public void findAllFreeTest() {
-        List<Apartment> apartments = apartmentService.findAllFree();
-        showData(apartments);
-    }
-
-    @Test
-    public void findFreeByClassTest() {
-        List<Apartment> apartments = apartmentService.findFreeByClass("BDRM1");
-        showData(apartments);
-    }
-
-    @Test
-    public void findFreeByRoomQuantity() {
-        List<Apartment> apartments = apartmentService.findFreeByRoomQuantity(4);
-        showData(apartments);
-    }
-
-    @Test
-    //@DatabaseSetup("classpath:setup.xml")
-    //@ExpectedDatabase("classpath:expected.xml")
-    public void saveTest() {
-
-        ApartmentClass apartmentClass = new ApartmentClass();
-        apartmentClass.setClassName("BDRM1");
-
+    public void findByIdTest() {
         Apartment apartment = new Apartment();
-        apartment.setId("999");
-        apartment.setApartmentClass(apartmentClass);
-        apartment.setStatus("free");
+        apartment.setId("201");
 
-        apartmentService.save(apartment);
+        when(apartmentRepository.findById("201")).thenReturn(apartment);
 
-        List<Apartment> apartments = apartmentService.findAllFree();
-        showData(apartments);
+        Apartment result = apartmentService.findById("201");
+        assertEquals(apartment.getId(), result.getId());
     }
 
     @Test
-    public void getByIdTest() {
-        Apartment apartment = apartmentService.findById("202");
-        System.out.println(apartment);
+    public void removeToDo() {
+        apartmentService.remove("");
+        verify(apartmentRepository, times(1)).remove("");
     }
 
 }

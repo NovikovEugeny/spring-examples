@@ -1,6 +1,7 @@
 package com.epam.hotelbooking.listener;
 
 import com.epam.hotelbooking.util.AppContext;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
